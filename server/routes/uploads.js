@@ -65,6 +65,5 @@ const removeTmp = (path) => {
   })
 }
 
-router.test('/sdsad')
 
 module.exports = router
