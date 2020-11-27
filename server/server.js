@@ -27,9 +27,11 @@ mongoose.connect(process.env.MONGODB_URL, {
 //Routes
 const userRouter = require('./routes/user')
 const categoryRouter = require('./routes/category')
+const uploadRouter = require('./routes/uploads')
 
 app.use('/user', userRouter)
 app.use('/api', categoryRouter)
+app.use('/api', uploadRouter)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=>{
