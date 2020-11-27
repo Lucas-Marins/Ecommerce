@@ -65,6 +65,6 @@ const removeTmp = (path) => {
   })
 }
 
-router.test('/faker')
+router.test('/test')
 
 module.exports = router
