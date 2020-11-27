@@ -65,4 +65,6 @@ const removeTmp = (path) => {
   })
 }
 
+router.get('/leran')
+
 module.exports = router
