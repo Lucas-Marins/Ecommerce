@@ -10,4 +10,6 @@ router.post('/category', auth, authAdmin, categoryCrtl.createCategory)
 router.delete('/category/:id', categoryCrtl.deleteCategory)
 router.put('/category/:id', categoryCrtl.updateCategory)
 
+router.get()
+
 module.exports = router
