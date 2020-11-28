@@ -43,3 +43,7 @@ button{
 
 /* ---------------- Detail Product --------------- */
 @import url(./components/MainPages/detailProduct/detailProduct.css);
+
+
+/**----------Login------------------------*/
+@import url(./components/MainPages/auth/login.css)

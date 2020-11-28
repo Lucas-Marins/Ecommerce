@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import BtnRender from '../../products/BtnRender'
 
 function ProductItem({product}) {
 
@@ -14,14 +14,7 @@ function ProductItem({product}) {
                 <p>{product.description}</p>
             </div>
 
-            <div className="row_btn">
-                <Link id="btn_buy" to="#!">
-                    Buy now
-                </Link>
-                <Link id="btn_view" to={`/details/${product._id}`}>
-                    View
-                </Link>
-            </div>
+        <BtnRender product={product}/> 
 
         </div>
     )

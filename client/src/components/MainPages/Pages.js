@@ -12,15 +12,15 @@ function Pages(){
   return(
     <Switch>
       <Route path="/" exact component={Products} />
-      <Route path="/details/:id" exact component={DetailProduct} />
+      <Route path="/details/:id"  component={DetailProduct} />
 
-      <Route path="/login" exact component={Login} />
-      <Route path="/register" exact component={Register} />
+      <Route path="/login"  component={Login} />
+      <Route path="/register"  component={Register} />
 
-      <Route path="/cart" exact component={Cart} />
+      <Route path="/cart"  component={Cart} />
 
 
-      <Route path="*" exact component={NotFound} />
+      <Route path="*"  component={NotFound} />
     </Switch>
   )
 }
