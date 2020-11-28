@@ -35,4 +35,11 @@ button{
 }
 
 /**------------------Header-------------*/
-@import url(./components/Header/header.css)
+@import url(./components/Header/header.css);
+
+/* ------------- Products -------------- */
+
+@import url(./components/MainPages/products/products.css);
+
+/* ---------------- Detail Product --------------- */
+@import url(./components/MainPages/detailProduct/detailProduct.css);
