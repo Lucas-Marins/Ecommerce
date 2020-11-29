@@ -46,4 +46,8 @@ button{
 
 
 /**----------Login------------------------*/
-@import url(./components/MainPages/auth/login.css)
+@import url(./components/MainPages/auth/login.css);
+
+
+/**--------------Cart------------------*/
+@import url(./components/MainPages/cart/cart.css)

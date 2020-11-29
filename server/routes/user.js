@@ -13,4 +13,6 @@ router.get('/refresh_token', userCrtl.refreshToken)
 
 router.get('/infor',auth, userCrtl.getUser)
 
+router.patch('/addcart', auth, userCrtl.addCart)
+
 module.exports = router
