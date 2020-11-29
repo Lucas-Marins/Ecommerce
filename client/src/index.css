@@ -50,4 +50,8 @@ button{
 
 
 /**--------------Cart------------------*/
-@import url(./components/MainPages/cart/cart.css)
+@import url(./components/MainPages/cart/cart.css);
+
+
+/**-------------- History-----------------*/
+@import url(./components/MainPages/history/history.css)

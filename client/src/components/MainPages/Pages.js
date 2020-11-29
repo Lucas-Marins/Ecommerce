@@ -1,9 +1,11 @@
-import React ,{useContext, useEffect} from 'react'
+import React ,{useContext} from 'react'
 import {Switch, Route} from 'react-router-dom'
 import Products from './products/Products'
 import DetailProduct from './detailProduct/detailProduct'
 import Login from './auth/Login'
 import Register from './auth/Register'
+import OrderHistory from './history/OrderHistory'
+import OrderDetails from './history/OrderDetails'
 import Cart from './cart/Cart'
 import NotFound from  './utils/not_found/NotFound'
 
@@ -21,6 +23,9 @@ function Pages(){
 
       <Route path="/login"  component={isLogged ? NotFound : Login} />
       <Route path="/register"  component={isLogged ? NotFound : Register} />
+
+      <Route path="/history"  exact component={isLogged ? OrderHistory : NotFound} />
+      <Route path="/history/:id" exact component={isLogged ? OrderDetails : NotFound} />
 
       <Route path="/cart"  component={Cart} />
 

@@ -7,6 +7,7 @@ function Cart() {
   const state = useContext(GlobalState)
   const [cart, setCart] = state.UserAPI.cart
   const [token] = state.token
+  const [callback, setCallback] = state.UserAPI.callback
   const [total, setTotal] = useState(0)
 
   useEffect(()=>{
@@ -21,7 +22,7 @@ function Cart() {
     getTotal()
   },[cart])
 
-  const addToCart = async () =>{
+  const addToCart = async (cart) =>{
     await axios.patch('/user/addcart',{cart}, {
       headers: {Authorization: token}
     })
@@ -35,7 +36,7 @@ function Cart() {
     })
 
     setCart([...cart])
-    addToCart()
+    addToCart(cart)
   }
 
   const decrement = (id) => {
@@ -46,6 +47,7 @@ function Cart() {
     })
 
     setCart([...cart])
+    addToCart(cart)
   }
 
   const removeProduct = (id) => {
@@ -57,13 +59,22 @@ function Cart() {
       })
 
       setCart([...cart])
-      addToCart()
+      addToCart(cart)
     }
   }
 
-  const tranSuccess = async (payment) => {
-    console.log(payment)
-  }
+  const tranSuccess = async(payment) => {
+    const {paymentID, address} = payment;
+
+    await axios.post('/api/payment', {cart, paymentID, address}, {
+        headers: {Authorization: token}
+    })
+
+    setCart([])
+    addToCart([])
+    alert("You have successfully placed an order.")
+    setCallback(!callback)
+}
 
   if(cart.length === 0) 
     return <h2 style={{textAlign: "center", fontSize:"5rem"}}>Cart Empty</h2>
