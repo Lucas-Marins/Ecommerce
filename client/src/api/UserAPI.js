@@ -7,28 +7,29 @@ function UserAPI(token) {
   const [isAdmin, setIsAdmin] = useState(false)
   const [cart, setCart] = useState([])
 
-  useEffect(()=> {
-    
+  useEffect(() =>{
     if(token){
-      const getUser = async () => {
-        try {
-          const res = await axios.get('/user/infor',{
-            headers:{Authorization: token}
-          })
+        const getUser = async () =>{
+            try {
+                const res = await axios.get('/user/infor', {
+                    headers: {Authorization: token}
+                })
 
-          setIsLogged(true)
-          res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
+                setIsLogged(true)
+                res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
 
-          setCart(res.data.cart)
-          
-        } catch (error) {
-          alert(error.response.data.msg)
+                setCart(res.data.cart)
+
+            } catch (err) {
+                alert(err.response.data.msg)
+            }
         }
-      }
-      getUser()
+
+        getUser()
+        
     }
-  },[token])
-  
+},[token])
+
   const addCart = async (product) => {
     if(!isLogged) return alert("Please login to continue buying")
 
