@@ -18,7 +18,7 @@ const categoryCrtl = {
       const newCategory = new Category({name})
 
       await newCategory.save()
-      res.json(newCategory)
+      res.json({msg: "Created"})
     } catch (error) {
       return res.satus(500).json({msg: err.message})
     }

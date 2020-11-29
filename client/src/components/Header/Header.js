@@ -1,4 +1,4 @@
-import React,{useState, useContext} from 'react'
+import React,{useContext} from 'react'
 import {GlobalState} from '../../GlobalState'
 import Menu from './icon/bars-solid.svg'
 import Close from './icon/times-solid.svg'
@@ -14,8 +14,7 @@ function Header() {
 
   const logoutUser = async () => {
     await axios.get('/user/logout')
-    localStorage.clear()
-     window.location.href= "/"
+    window.location.href= "/"
   }
 
   const adminRouter = () => {
