@@ -29,6 +29,8 @@ function CreateProduct() {
 
   const [products, setProducts] = state.productsAPI.products
   const [onEdit, setOnEdit] = useState(false)
+  const [callback, setCallback] = state.productsAPI.callback
+  
   useEffect(() => {
     if(params.id){
       setOnEdit(true)
@@ -76,18 +78,18 @@ function CreateProduct() {
 
   const handleDestroy = async () => {
     try {
-      if(!isAdmin) return alert("You're not an admin")
-      setLoading(true)
-      await axios.post('/api/destroy', {public_id: images.public_id},{
-        headers: {Authorization: token}
-      })
-
-      setLoading(true)
-      setImages(false)
-    } catch (error) {
-      alert(error.response.data.msg)
+        if(!isAdmin) return alert("You're not an admin")
+        setLoading(true)
+        await axios.post('/api/destroy', {public_id: images.public_id}, {
+            headers: {Authorization: token}
+        })
+        setLoading(false)
+        setImages(false)
+    } catch (err) {
+        alert(err.response.data.msg)
     }
-  }
+}
+
 
   const handleChangeInput = e => {
     const {name, value} = e.target
@@ -110,9 +112,7 @@ function CreateProduct() {
         })
       }
       
-
-      setImages(false)
-      setProduct(initialState)
+      setCallback(!callback)
       history.push("/")
 
     } catch (error) {
