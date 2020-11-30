@@ -6,13 +6,13 @@ const jwt = require('jsonwebtoken')
 
 const createAccessToken = (user) =>{
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,{
-    expiresIn: '17s'
+    expiresIn: '11m'
   })
 }
 
 const createRefreshToken = (user) =>{
   return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET,{
-    expiresIn: '1d'
+    expiresIn: '7d'
   })
 }
 
@@ -49,6 +49,7 @@ const userCrtl =  {
       res.cookie('refreshtoken', refreshtoken, {
         httpOnly: true,
         path: '/user/refresh_token',
+        maxAge: 7*24*60*60*1000 // 7d
       })
   
       return res.json({accesstoken})
@@ -74,6 +75,7 @@ const userCrtl =  {
       res.cookie('refreshtoken', refreshtoken, {
         httpOnly: true,
         path: '/user/refresh_token',
+        maxAge: 7*24*60*60*1000 // 7d
       })
 
       return res.json({accesstoken})
