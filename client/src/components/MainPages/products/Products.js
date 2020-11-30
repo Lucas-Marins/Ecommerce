@@ -3,6 +3,8 @@ import {GlobalState} from '../../../GlobalState'
 import ProductItem from '../utils/productItem/productItem'
 import Loading from '../utils/loading/Loading'
 import axios from 'axios'
+import Filters from './Filter'
+import LoadMore from './LoadMore'
 
 
 function Products() {
@@ -58,6 +60,7 @@ function Products() {
   if(loading) return <div className="products"><Loading /></div>
     return (
       <>
+      <Filters />
       {
         isAdmin &&
         <div className="delete-all">
@@ -75,6 +78,8 @@ function Products() {
                 })
             } 
         </div>
+        
+        <LoadMore />
         {products.length === 0 && <Loading />}
       </>
     )
