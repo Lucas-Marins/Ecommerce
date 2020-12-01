@@ -4,10 +4,12 @@ import UserAPI from './api/UserAPI'
 import CategoryAPI from './api/CategoryAPI'
 import axios from 'axios'
 
+
 export const GlobalState = createContext()
 
 export const DataProvider = ({children}) => {
   const [token, setToken] = useState(false)
+
 
  
 
@@ -22,16 +24,20 @@ export const DataProvider = ({children}) => {
             setTimeout(() => {
                 refreshToken()
             }, 10 * 60 * 1000)
+
         }
         refreshToken()
     }
 },[])
 
+      
+
   const state= {
     token: [token, setToken] ,
     productsAPI : ProductsAPI(),
     UserAPI: UserAPI(token),
-    categoriesAPI: CategoryAPI()
+    categoriesAPI: CategoryAPI(),
+  
   }
   return(
     <GlobalState.Provider value={state}>
